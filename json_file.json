@@ -1,0 +1,429 @@
+{
+    "data": {
+        "type": "Generaci\u00f3n por tecnolog\u00eda",
+        "id": "gen1",
+        "attributes": {
+            "title": "Generaci\u00f3n por tecnolog\u00eda",
+            "last-update": "2019-06-12T17:00:43.000+02:00",
+            "description": null
+        },
+        "meta": {
+            "cache-control": {
+                "cache": "HIT",
+                "expireAt": "2026-11-27T03:58:42"
+            }
+        }
+    },
+    "included": [
+        {
+            "type": "Hidr\u00e1ulica",
+            "id": "10330",
+            "groupId": "1",
+            "attributes": {
+                "title": "Hidr\u00e1ulica",
+                "description": null,
+                "color": "#0090d1",
+                "icon": null,
+                "type": "Renovable",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-06-20T14:17:29.000+02:00",
+                "values": [
+                    {
+                        "value": 1006208.552,
+                        "percentage": 0.04482814638697235,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 700914.375,
+                        "percentage": 0.03251746074817508,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 731944.331,
+                        "percentage": 0.03446238183064846,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 410077.844,
+                        "percentage": 0.019173523449433308,
+                        "datetime": "2017-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 768189.817,
+                        "percentage": 0.035506152699388324,
+                        "datetime": "2018-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Nuclear",
+            "id": "1695",
+            "groupId": "1",
+            "attributes": {
+                "title": "Nuclear",
+                "description": null,
+                "color": "#464394",
+                "icon": null,
+                "type": "No-Renovable",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-06-20T14:17:30.000+02:00",
+                "values": [
+                    {
+                        "value": 7770076.699,
+                        "percentage": 0.34616892791105486,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 7913818.669,
+                        "percentage": 0.36714511374856973,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 7992498.721,
+                        "percentage": 0.37631351325278783,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 7971229.695,
+                        "percentage": 0.3727013339396645,
+                        "datetime": "2017-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 7714455.597,
+                        "percentage": 0.35656634904304246,
+                        "datetime": "2018-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Carb\u00f3n",
+            "id": "10331",
+            "groupId": "1",
+            "attributes": {
+                "title": "Carb\u00f3n",
+                "description": null,
+                "color": "#993300",
+                "icon": null,
+                "type": "No-Renovable",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-06-20T14:17:29.000+02:00",
+                "values": [
+                    {
+                        "value": 873047.18,
+                        "percentage": 0.038895601423762693,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 894928.56,
+                        "percentage": 0.04151834426597521,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": -2005.081,
+                        "percentage": 9.440590506244174e-05,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Ciclo combinado",
+            "id": "1703",
+            "groupId": "1",
+            "attributes": {
+                "title": "Ciclo combinado",
+                "description": null,
+                "color": "#ffcc66",
+                "icon": null,
+                "type": "No-Renovable",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-11-29T14:16:11.000+01:00",
+                "values": [
+                    {
+                        "value": 1035669.191,
+                        "percentage": 0.0461406633946252,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1280686.57,
+                        "percentage": 0.05941478268396191,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1258162.343,
+                        "percentage": 0.0592384819897038,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1658072.074,
+                        "percentage": 0.07752450969209036,
+                        "datetime": "2017-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1401749.725,
+                        "percentage": 0.06478963750983384,
+                        "datetime": "2018-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "E\u00f3lica",
+            "id": "10333",
+            "groupId": "1",
+            "attributes": {
+                "title": "E\u00f3lica",
+                "description": null,
+                "color": "#6fb114",
+                "icon": null,
+                "type": "Renovable",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-06-20T14:17:29.000+02:00",
+                "values": [
+                    {
+                        "value": 8390570.682,
+                        "percentage": 0.37381289401218926,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 7286716.406,
+                        "percentage": 0.3380520120095816,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 7680537.222,
+                        "percentage": 0.36162532476677106,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 7507167.263,
+                        "percentage": 0.3510037171282743,
+                        "datetime": "2017-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 8075036.159,
+                        "percentage": 0.3732325794609383,
+                        "datetime": "2018-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Solar fotovoltaica",
+            "id": "1707",
+            "groupId": "1",
+            "attributes": {
+                "title": "Solar fotovoltaica",
+                "description": null,
+                "color": "#e48500",
+                "icon": null,
+                "type": "Renovable",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-11-29T14:16:13.000+01:00",
+                "values": [
+                    {
+                        "value": 1689431.18,
+                        "percentage": 0.07526677058868352,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1722910.268,
+                        "percentage": 0.07993082894371771,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1624757.124,
+                        "percentage": 0.0764989877206307,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1744799.365,
+                        "percentage": 0.08157951478935264,
+                        "datetime": "2017-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1580628.938,
+                        "percentage": 0.07305753238551456,
+                        "datetime": "2018-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Solar t\u00e9rmica",
+            "id": "1708",
+            "groupId": "1",
+            "attributes": {
+                "title": "Solar t\u00e9rmica",
+                "description": null,
+                "color": "#ff0000",
+                "icon": null,
+                "type": "Renovable",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-06-20T14:17:30.000+02:00",
+                "values": [
+                    {
+                        "value": 734252.687,
+                        "percentage": 0.03271209221233472,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 735486.298,
+                        "percentage": 0.03412135301981158,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 721879.998,
+                        "percentage": 0.03398851944518134,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 742678.029,
+                        "percentage": 0.03472451587608915,
+                        "datetime": "2017-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 650078.076,
+                        "percentage": 0.030046963552734215,
+                        "datetime": "2018-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Otras renovables",
+            "id": "10334",
+            "groupId": "1",
+            "attributes": {
+                "title": "Otras renovables",
+                "description": null,
+                "color": "#9a5cbc",
+                "icon": null,
+                "type": "Renovable",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-06-20T14:17:29.000+02:00",
+                "values": [
+                    {
+                        "value": 227923.774,
+                        "percentage": 0.010154356455860457,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 252176.13,
+                        "percentage": 0.011699185665726568,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 238410.359,
+                        "percentage": 0.011225155351657442,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 265550.596,
+                        "percentage": 0.012416034306444976,
+                        "datetime": "2017-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 272094.336,
+                        "percentage": 0.01257634874721943,
+                        "datetime": "2018-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Cogeneraci\u00f3n",
+            "id": "10335",
+            "groupId": "1",
+            "attributes": {
+                "title": "Cogeneraci\u00f3n",
+                "description": null,
+                "color": "#cfa2ca",
+                "icon": null,
+                "type": "No-Renovable",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-06-20T14:17:29.000+02:00",
+                "values": [
+                    {
+                        "value": 718730.339,
+                        "percentage": 0.03202054761451706,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 767378.364,
+                        "percentage": 0.03560091891448054,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 988741.079,
+                        "percentage": 0.04655322973755685,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1088139.556,
+                        "percentage": 0.05087685081865079,
+                        "datetime": "2017-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 1173167.377,
+                        "percentage": 0.0542244366013288,
+                        "datetime": "2018-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Generaci\u00f3n total",
+            "id": "10338",
+            "groupId": "1",
+            "attributes": {
+                "title": "Generaci\u00f3n total",
+                "description": null,
+                "color": "#2b2e34",
+                "icon": null,
+                "type": "total",
+                "magnitude": null,
+                "composite": false,
+                "last-update": "2019-06-20T14:17:29.000+02:00",
+                "values": [
+                    {
+                        "value": 22445910.284,
+                        "percentage": 1,
+                        "datetime": "2014-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 21555015.64,
+                        "percentage": 1,
+                        "datetime": "2015-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 21234926.096,
+                        "percentage": 1,
+                        "datetime": "2016-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 21387714.422,
+                        "percentage": 1,
+                        "datetime": "2017-01-01T00:00:00.000+01:00"
+                    },
+                    {
+                        "value": 21635400.025,
+                        "percentage": 1,
+                        "datetime": "2018-01-01T00:00:00.000+01:00"
+                    }
+                ]
+            }
+        }
+    ]
+}
