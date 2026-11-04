@@ -2,7 +2,7 @@ BASE_URL = "https://apidatos.ree.es"
 ENDPOINT = "/es/datos/mercados/precios-mercados-tiempo-real"
 API_URL = f"{BASE_URL}{ENDPOINT}"
 
-GEO_TRUNC = "electric_system"
+GEO_TRUNC = "electric_system"  # With the actual type of JSON response (only including PVPC) it's not necessary.
 GEO_LIMIT = "peninsular"
 GEO_IDS = "8741"
 

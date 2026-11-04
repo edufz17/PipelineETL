@@ -1,13 +1,13 @@
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date
 
 from energy_etl.config import GEO_IDS, GEO_LIMIT, GEO_TRUNC, VALID_TIME_TRUNCS
 
 
 @dataclass(frozen=True)
 class QueryParams:
-    start_date: datetime
-    end_date: datetime
+    start_date: date
+    end_date: date
     time_trunc: str = "hour"
     geo_trunc: str = GEO_TRUNC
     geo_limit: str = GEO_LIMIT
