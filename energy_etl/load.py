@@ -1,72 +1,82 @@
-from typing import Any
-
 import pandas as pd
-from sqlalchemy import func
-from sqlalchemy.dialects.postgresql import insert
-from sqlalchemy.engine import Engine
 
-from database.connection import engine as default_engine
-from database.schema import energy_prices, metadata
+from database.connection import get_connection
+from database.schema import init_schema
 
-COLUMNS = (
+COLUMNS = [
     "metric_id",
     "metric_type",
     "datetime_utc",
     "value",
     "unit",
     "geo_limit",
-    "percentage",
+]
+
+UPSERT_SQL = """
+INSERT INTO energy_prices (
+    metric_id,
+    metric_type,
+    datetime_utc,
+    value,
+    unit,
+    geo_limit,
 )
+VALUES (
+    %(metric_id)s,
+    %(metric_type)s,
+    %(datetime_utc)s,
+    %(value)s,
+    %(unit)s,
+    %(geo_limit)s,
+)
+ON CONFLICT ON CONSTRAINT uq_energy_prices_metric_datetime
+DO UPDATE SET
+    metric_type = EXCLUDED.metric_type,
+    value = EXCLUDED.value,
+    unit = EXCLUDED.unit,
+    geo_limit = EXCLUDED.geo_limit;
+"""
 
 
-def _to_records(df: pd.DataFrame) -> tuple[list[dict[str, Any]], int]:
-    prepared = df.rename(columns={"datetime": "datetime_utc"})
-    records = prepared.loc[:, COLUMNS].to_dict("records")
+def prepare_records(df: pd.DataFrame) -> list[dict]:
+    """Cleans the DataFrame and prepares it as a list of dictionaries for SQL"""
+    # 1. Renaming datetime so it matches with Postgres' table
+    clean_df = df.rename(columns={"datetime": "datetime_utc"})
 
-    valid_records = [
-        {
-            key: (None if pd.isna(value) else value)
-            for key, value in record.items()
-        }
-        for record in records
-        if pd.notna(record["datetime_utc"]) and pd.notna(record["value"])
-    ]
+    # 2. Removing empty dates
+    initial_rows = len(clean_df)
+    clean_df = clean_df.dropna(subset=["datetime_utc", "value"])
+    skipped = initial_rows - len(clean_df)
+    if skipped > 0:
+        print(f"Warning: skipped {skipped} incomplete rows.")
 
-    return valid_records, len(records) - len(valid_records)
+    # 3. Choosing
+    clean_df = clean_df[COLUMNS]
+    clean_df = clean_df.astype(object).where(pd.notna(clean_df), None)
+
+    return clean_df.to_dict(orient="records")
 
 
-def load_data(
-    df: pd.DataFrame,
-    engine: Engine | None = None,
-) -> int:
+def load_data(df: pd.DataFrame) -> int:
+    """Guarda los registros del DataFrame en PostgreSQL y devuelve el total procesado."""
     if df.empty:
         print("No rows to load: DataFrame is empty.")
         return 0
 
-    engine = engine or default_engine
-    metadata.create_all(engine)
-
-    records, skipped = _to_records(df)
-    if skipped:
-        print(f"Warning: skipped {skipped} incomplete rows.")
-
+    records = prepare_records(df)
     if not records:
         print("No valid rows to load.")
         return 0
 
-    statement = insert(energy_prices).values(records)
-    statement = statement.on_conflict_do_update(
-        constraint="uq_energy_prices_metric_datetime",
-        set_={
-            "metric_type": statement.excluded.metric_type,
-            "value": statement.excluded.value,
-            "unit": statement.excluded.unit,
-            "geo_limit": statement.excluded.geo_limit,
-            "percentage": statement.excluded.percentage,
-            "updated_at": func.now(),
-        },
-    ).returning(energy_prices.c.id)
+    # Al salir del bloque 'with', psycopg hace COMMIT automático si todo va bien (o ROLLBACK si hay error)
+    with get_connection() as conn:
+        init_schema(conn)
+        with conn.cursor() as cur:
+            cur.execute("""
+                        ALTER TABLE energy_prices
+    DROP COLUMN IF EXISTS percentage,
+    DROP COLUMN IF EXISTS updated_at;
+                        """)
+            cur.executemany(UPSERT_SQL, records)
 
-    with engine.begin() as connection:
-        result = connection.execute(statement)
-        return len(result.scalars().all())
+    return len(records)

@@ -27,7 +27,6 @@ def transform_data(
                     "value": value.get("value"),
                     "unit": PRICE_UNIT,
                     "geo_limit": params.geo_limit,
-                    "percentage": value.get("percentage"),
                 }
             )
 
@@ -39,7 +38,6 @@ def transform_data(
 
     df["datetime"] = pd.to_datetime(df["datetime"], errors="coerce", utc=True)
     df["value"] = pd.to_numeric(df["value"], errors="coerce")
-    df["percentage"] = pd.to_numeric(df["percentage"], errors="coerce")
 
     df = df.sort_values(by=["metric_id", "datetime"]).reset_index(drop=True)
     return df

@@ -1,0 +1,23 @@
+[project]
+name = "pipelineetl"
+version = "0.1.0"
+description = "ETL pipeline that extracts real-time electricity prices from the Spanish grid operator (REE) API and loads them into PostgreSQL."
+readme = "README.md"
+authors = [
+    { name = "edufz17", email = "efzgh.17@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "pandas>=3.1.1",
+    "psycopg[binary]>=3.3.9",
+    "python-dotenv>=1.0",
+    "requests>=2.34.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+module-name = ["energy_etl", "database"]

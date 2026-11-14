@@ -3,6 +3,8 @@ from typing import Optional
 import pandas as pd
 
 from energy_etl.extract import extract_data
+
+# from energy_etl.load import load_data
 from energy_etl.load import load_data
 from energy_etl.params import QueryParams
 from energy_etl.transform import transform_data
