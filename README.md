@@ -2,7 +2,7 @@
 
 An end-to-end ETL pipeline that downloads real-time electricity market prices from the Spanish grid operator ([REE](https://www.ree.es/)) public API, cleans the data with pandas, and stores it in PostgreSQL.
 
-> This is a learning project. It is intentionally small and readable, and it grows step by step as I learn more about data engineering. Feedback and suggestions are welcome.
+> Modular data engineering pipeline built with clean architecture and idempotent ingestion. See [ROADMAP.md](ROADMAP.md) for upcoming API, web, and observability features.
 
 **Languages:** [English](#english) | [Español](#español)
 
@@ -49,6 +49,7 @@ PipelineETL/
 ├── requirements.txt           # Same dependencies for pip users
 ├── uv.lock                    # Locked dependency versions
 ├── .env.example               # Environment variable template
+├── ROADMAP.md                 # Planned architecture and feature roadmap
 └── README.md
 ```
 
@@ -217,15 +218,14 @@ HAVING count(*) > 1;
 | `DataFrame is empty` | The selected date range has no data, or the API is unavailable. |
 | Need a clean database | `docker compose down -v` deletes the volume, then repeat the setup steps. |
 
-### Current limitations and next steps
+### Roadmap & next steps
 
-- The date range is hardcoded in `main.py`; a CLI argument or environment variable would make it more flexible.
-- Runs are manual: there is no scheduler yet.
-- The table is created with plain SQL. For future schema changes, a migration tool would be a safer option.
-- The loader still contains a small cleanup step that drops two old columns. This can be replaced by a proper migration.
-- There are no automated tests yet. Good first tests: `QueryParams` validation, `transform_data` with a sample JSON, and load idempotency.
-- The API may change or rate-limit requests. `extract.py` raises clear errors, but retries and backoff are not implemented.
-- This is a learning project, so these improvements will be added gradually.
+The core ETL pipeline is complete and functional. Upcoming iterations expand the project into a full-stack data service (detailed in [ROADMAP.md](ROADMAP.md)):
+
+- **Pipeline CLI & Observability:** Add CLI arguments (`argparse`) to `main.py` and an `etl_runs` audit table in PostgreSQL to log execution duration, row counts, and job status.
+- **REST API & Auth (FastAPI):** Expose processed market prices and pipeline triggers behind JWT authentication and role-based access (`analyst` vs. `admin`).
+- **Interactive Web Client (Streamlit + Plotly):** Build a decoupled frontend that authenticates against FastAPI for custom date filtering, visual exploration, and CSV exports.
+- **BI & Health Dashboards (Grafana OSS):** Provision Grafana in Docker Compose connected to PostgreSQL to monitor PVPC price trends and pipeline execution health.
 
 ### Data source
 
@@ -280,6 +280,7 @@ PipelineETL/
 ├── requirements.txt           # Las mismas dependencias para usuarios de pip
 ├── uv.lock                    # Versiones bloqueadas de las dependencias
 ├── .env.example               # Plantilla de variables de entorno
+├── ROADMAP.md                 # Arquitectura planeada y hoja de ruta de funcionalidades
 └── README.md
 ```
 
@@ -448,15 +449,14 @@ HAVING count(*) > 1;
 | `DataFrame is empty` | El rango de fechas no tiene datos o la API no está disponible. |
 | Necesito una base de datos limpia | `docker compose down -v` borra el volumen; después repite los pasos de configuración. |
 
-### Limitaciones y próximos pasos
+### Hoja de ruta y próximos pasos
 
-- El rango de fechas está fijado en `main.py`; un argumento de línea de comandos o una variable de entorno lo haría más flexible.
-- Las ejecuciones son manuales: todavía no hay planificador.
-- La tabla se crea con SQL directo. Para futuros cambios de esquema, una herramienta de migraciones sería más segura.
-- El cargador aún incluye un pequeño paso de limpieza que elimina dos columnas antiguas. Se puede sustituir por una migración.
-- Todavía no hay tests automatizados. Buenas primeras pruebas: validación de `QueryParams`, `transform_data` con un JSON de ejemplo e idempotencia de la carga.
-- La API puede cambiar o limitar peticiones. `extract.py` lanza errores claros, pero no hay reintentos ni *backoff*.
-- Este es un proyecto de aprendizaje, así que estas mejoras se irán añadiendo poco a poco.
+El núcleo del pipeline ETL está completo y operativo. Las siguientes iteraciones amplían el proyecto hacia una arquitectura de datos orientada a servicios (detallada en [ROADMAP.md](ROADMAP.md)):
+
+- **CLI y observabilidad del ETL:** Parametrizar `main.py` mediante argumentos de terminal (`argparse`) e incorporar la tabla de auditoría `etl_runs` en PostgreSQL para registrar duración, filas procesadas y estado de cada carga.
+- **API REST y seguridad (FastAPI):** Exponer los datos procesados y el lanzamiento de ingestas bajo autenticación JWT y control de roles (`analyst` frente a `admin`).
+- **Cliente web interactivo (Streamlit + Plotly):** Desarrollar una interfaz desacoplada conectada exclusivamente a FastAPI para filtrar series horarias, explorar gráficas y exportar resultados en CSV.
+- **Cuadros de mando y monitorización (Grafana OSS):** Desplegar Grafana en Docker Compose conectado a PostgreSQL para vigilar la evolución del mercado eléctrico y la salud operativa del pipeline.
 
 ### Fuente de datos
 
