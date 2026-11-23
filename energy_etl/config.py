@@ -10,4 +10,4 @@ TIMEOUT = (5, 30)
 
 VALID_TIME_TRUNCS = {"hour", "day", "month", "year"}
 
-PRICE_UNIT = "EUR/MWh"
+PRICE_UNIT = "EUR/kWh"

@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS energy_prices (
     metric_id TEXT NOT NULL,
     metric_type TEXT NOT NULL,
     datetime_utc TIMESTAMPTZ NOT NULL,
-    value NUMERIC(12, 4) NOT NULL,
+    value NUMERIC(12, 7) NOT NULL,
     unit TEXT NOT NULL,
     geo_limit TEXT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),

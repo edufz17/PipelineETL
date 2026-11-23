@@ -19,7 +19,7 @@ INSERT INTO energy_prices (
     datetime_utc,
     value,
     unit,
-    geo_limit,
+    geo_limit
 )
 VALUES (
     %(metric_id)s,
@@ -27,7 +27,7 @@ VALUES (
     %(datetime_utc)s,
     %(value)s,
     %(unit)s,
-    %(geo_limit)s,
+    %(geo_limit)s
 )
 ON CONFLICT ON CONSTRAINT uq_energy_prices_metric_datetime
 DO UPDATE SET
@@ -72,11 +72,6 @@ def load_data(df: pd.DataFrame) -> int:
     with get_connection() as conn:
         init_schema(conn)
         with conn.cursor() as cur:
-            cur.execute("""
-                        ALTER TABLE energy_prices
-    DROP COLUMN IF EXISTS percentage,
-    DROP COLUMN IF EXISTS updated_at;
-                        """)
             cur.executemany(UPSERT_SQL, records)
 
     return len(records)

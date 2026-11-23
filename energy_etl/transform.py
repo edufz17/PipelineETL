@@ -37,7 +37,7 @@ def transform_data(
         return df
 
     df["datetime"] = pd.to_datetime(df["datetime"], errors="coerce", utc=True)
-    df["value"] = pd.to_numeric(df["value"], errors="coerce")
+    df["value"] = pd.to_numeric(df["value"], errors="coerce") / 1000
 
     df = df.sort_values(by=["metric_id", "datetime"]).reset_index(drop=True)
     return df
